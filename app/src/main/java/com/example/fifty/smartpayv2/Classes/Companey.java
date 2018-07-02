@@ -17,6 +17,10 @@ public class Companey {
         CompaneyLocation = companeyLocation;
     }
 
+    public Companey() {
+
+    }
+
     public String getName() {
         return Name;
     }

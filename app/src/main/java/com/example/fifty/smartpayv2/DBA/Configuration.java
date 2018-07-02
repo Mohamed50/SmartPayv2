@@ -12,6 +12,7 @@ public class Configuration {
     public static final String PAYMENT_HISTORY_URL = "";
     public static final String DEDUCT_MONEY_URL = "";
     public static final String ADD_NEW_CARD_URL = "";
+    public static final String  GET_STORES_URL = "";
 
 
     //DATA KEYS ON SERVER
@@ -29,6 +30,10 @@ public class Configuration {
     public static final String KEY_CARD_ICON = "";
     public static final String KEY_CARD_HOLDER_NAME = "";
     public static final String KEY_CARD_FLAG = "";
+    public static final String KEY_COMPANEY_NAME = "";
+    public static final String KEY_COMPANEY_TYPE = "";
+    public static final String KEY_COMPANEY_LATITUDE = "";
+    public static final String KEY_COMPANEY_LONGITUDE = "";
 
 
 

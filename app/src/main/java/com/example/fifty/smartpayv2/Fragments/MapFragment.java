@@ -7,8 +7,17 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.location.Location;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.example.fifty.smartpayv2.Classes.Companey;
+import com.example.fifty.smartpayv2.DBA.Configuration;
 import com.example.fifty.smartpayv2.DBA.DBA;
+import com.example.fifty.smartpayv2.DBA.LocalDBA;
+import com.example.fifty.smartpayv2.DBA.MySingleton;
 import com.example.fifty.smartpayv2.R;
 import com.google.android.gms.location.LocationListener;
 
@@ -20,6 +29,7 @@ import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -35,7 +45,13 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Fifty on 5/7/2018.
@@ -49,7 +65,14 @@ public class MapFragment extends Fragment implements
     Marker mCurrLocationMarker;
     LocationRequest mLocationRequest;
     MapView mMapView;
+    ArrayList<Companey> companeyArrayList = new ArrayList<Companey>();
     private GoogleMap googleMap;
+
+    public int [] companeyImage= {
+            R.mipmap.coffee_icon,
+            R.mipmap.coffee_icon,
+            R.mipmap.coffee_icon
+    };
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -83,7 +106,7 @@ public class MapFragment extends Fragment implements
                     buildGoogleApiClient();
                     mMap.setMyLocationEnabled(true);
                 }
-                setStoresLocationsMarkers();
+                getStoresFromServer();
                 // For dropping a marker at a point on the Map
 
                 mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
@@ -187,17 +210,52 @@ public class MapFragment extends Fragment implements
 
     }
     public void setStoresLocationsMarkers(){
-        DBA dba = new DBA();
-        ArrayList <Companey> companeyArrayList = dba.getCompaniesList();
-        for (int i = 0 ;i<companeyArrayList.size() ;i++){
-            Companey companey = companeyArrayList.get(i);
-            MarkerOptions markerOptions = new MarkerOptions();
-            markerOptions.position(companey.getCompaneyLocation());
-            markerOptions.title(companey.getName());
-            Bitmap currentLocationMarker = Bitmap.createScaledBitmap(((BitmapDrawable) getActivity().getResources().getDrawable(R.mipmap.coffee_icon)).getBitmap(), 100, 100, false);
-            markerOptions.icon(BitmapDescriptorFactory.fromBitmap(currentLocationMarker));
-            googleMap.addMarker(markerOptions);
+        if (companeyArrayList != null){
+            for (int i = 0 ;i<companeyArrayList.size() ;i++){
+                Companey companey = companeyArrayList.get(i);
+                MarkerOptions markerOptions = new MarkerOptions();
+                markerOptions.position(companey.getCompaneyLocation());
+                markerOptions.title(companey.getName());
+                Bitmap currentLocationMarker = Bitmap.createScaledBitmap(((BitmapDrawable) getActivity()
+                        .getResources().getDrawable(companeyImage[companey.getType()])).getBitmap(), 100, 100, false);
+                markerOptions.icon(BitmapDescriptorFactory.fromBitmap(currentLocationMarker));
+                googleMap.addMarker(markerOptions);
+            }
         }
+    }
+    public void getStoresFromServer(){
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.POST, Configuration.GET_STORES_URL, null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        int count = 0;
+                        while (count<response.length()){
+                            try {
+                                JSONObject jsonObject = response.getJSONObject(count);
+                                Companey companey = new Companey();
+                                companey.setName(jsonObject.getString(Configuration.KEY_COMPANEY_NAME));
+                                companey.setType(jsonObject.getInt(Configuration.KEY_COMPANEY_TYPE));
+                                companey.setCompaneyLocation(new LatLng(
+                                        jsonObject.getDouble(Configuration.KEY_COMPANEY_LATITUDE),
+                                        jsonObject.getDouble(Configuration.KEY_COMPANEY_LONGITUDE))
+                                );
+                                companeyArrayList.add(companey);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                                Toast.makeText(getActivity().getBaseContext(), "Something Went Wrong", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                        setStoresLocationsMarkers();
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getActivity().getBaseContext(), "Check Your Internet Connection And Open The Activity Again", Toast.LENGTH_SHORT).show();
+                    }
+                });
+        MySingleton.getInstance(getActivity().getApplicationContext()).addToRequestQueue(jsonArrayRequest);
+
     }
 
 
