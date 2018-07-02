@@ -1,6 +1,8 @@
 package com.example.fifty.smartpayv2.Fragments;
 
 import android.app.Fragment;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -18,6 +20,7 @@ import android.widget.TextView;
 
 import com.example.fifty.smartpayv2.Classes.Card;
 import com.example.fifty.smartpayv2.ClassesManagers.CardInfoManager;
+import com.example.fifty.smartpayv2.DBA.Configuration;
 import com.example.fifty.smartpayv2.R;
 
 import java.util.ArrayList;
@@ -101,7 +104,8 @@ public class WalletFragment extends Fragment {
 
     }
     public void UpdateUI(){
-        ArrayList<Card> cardArrayList = CardInfoManager.getCardsInfoManager(getActivity().getBaseContext()).getCardsInfoList();
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(Configuration.MY_PREFERENCE, Context.MODE_PRIVATE);
+        ArrayList<Card> cardArrayList = CardInfoManager.getCardsInfoManager(getActivity().getBaseContext(),sharedPreferences).getCardsInfoList();
         if (this.adapter == null && !cardArrayList.isEmpty()){
             CardsAdapter cAdapter = new CardsAdapter(cardArrayList);
             adapter = cAdapter;

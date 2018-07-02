@@ -243,7 +243,9 @@ public class MapFragment extends Fragment implements
                             } catch (JSONException e) {
                                 e.printStackTrace();
                                 Toast.makeText(getActivity().getBaseContext(), "Something Went Wrong", Toast.LENGTH_SHORT).show();
+                                return;
                             }
+                            count++;
                         }
                         setStoresLocationsMarkers();
                     }

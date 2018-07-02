@@ -8,13 +8,13 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.fifty.smartpayv2.DBA.Configuration;
 import com.example.fifty.smartpayv2.DBA.DBA;
 import com.example.fifty.smartpayv2.DBA.LocalDBA;
 import com.example.fifty.smartpayv2.R;
 
 public class LoginActivity extends Activity {
-    static String MY_PREFERENCE = "user_session";
-    static String USERNAME = "username";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +28,8 @@ public class LoginActivity extends Activity {
             Intent intent = new Intent(getApplicationContext(),MainActivity.class);
             startActivity(intent);
         }*/
-        SharedPreferences sharedPreferences = getSharedPreferences(MY_PREFERENCE,MODE_PRIVATE);
-        if(sharedPreferences != null && sharedPreferences.getString(USERNAME,null) != null){
+        SharedPreferences sharedPreferences = getSharedPreferences(Configuration.MY_PREFERENCE,MODE_PRIVATE);
+        if(sharedPreferences != null && sharedPreferences.getString(Configuration.KEY_PREFERENCE_USERNAME,null) != null){
             Intent intent = new Intent(getBaseContext(),MainActivity.class);
             startActivity(intent);
         }
@@ -43,9 +43,9 @@ public class LoginActivity extends Activity {
         int result = dba.login(username.getText().toString(),password.getText().toString());
         if (result!=-1){
            // localDBA.insertAccount(username.getText().toString(),password.getText().toString());
-            SharedPreferences sharedPreferences = getSharedPreferences(MY_PREFERENCE,MODE_PRIVATE);
+            SharedPreferences sharedPreferences = getSharedPreferences(Configuration.MY_PREFERENCE,MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString(USERNAME,username.getText().toString());
+            editor.putString(Configuration.KEY_PREFERENCE_USERNAME,username.getText().toString());
             editor.putInt("user_id",result);
             editor.commit();
             Toast.makeText(this,"Login Successfully",Toast.LENGTH_LONG).show();

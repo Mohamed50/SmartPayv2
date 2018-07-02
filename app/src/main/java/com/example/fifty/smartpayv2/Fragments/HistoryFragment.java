@@ -1,6 +1,8 @@
 package com.example.fifty.smartpayv2.Fragments;
 
 import android.app.Fragment;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,6 +16,7 @@ import android.widget.TextView;
 
 import com.example.fifty.smartpayv2.ClassesManagers.PaymentHistoryInfoManager;
 import com.example.fifty.smartpayv2.Classes.PaymentInfo;
+import com.example.fifty.smartpayv2.DBA.Configuration;
 import com.example.fifty.smartpayv2.R;
 
 import java.text.SimpleDateFormat;
@@ -92,7 +95,8 @@ public class HistoryFragment extends Fragment {
 
     }
     public void UpdateUI(){
-        ArrayList<PaymentInfo> paymentInfoArrayList = PaymentHistoryInfoManager.getPaymentInfoManager(getActivity().getBaseContext()).getPaymentInfosList();
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(Configuration.MY_PREFERENCE, Context.MODE_PRIVATE);
+        ArrayList<PaymentInfo> paymentInfoArrayList = PaymentHistoryInfoManager.getPaymentInfoManager(getActivity().getBaseContext(),sharedPreferences).getPaymentInfosList();
         if (this.adapter == null){
             PaymentHistoryAdapter cAdapter = new PaymentHistoryAdapter(paymentInfoArrayList);
             adapter = cAdapter;

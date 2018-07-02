@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.fifty.smartpayv2.DBA.Configuration;
 import com.example.fifty.smartpayv2.Fragments.AddCardFragment;
 import com.example.fifty.smartpayv2.Fragments.HistoryFragment;
 import com.example.fifty.smartpayv2.Fragments.MapFragment;
@@ -110,7 +111,7 @@ public class MainActivity extends AppCompatActivity
             fragmentManager.beginTransaction().replace(R.id.content_frame, new WalletFragment()).commit();
         }
         else if (id == R.id.nav_logout){
-            SharedPreferences sharedPreferences = getSharedPreferences(LoginActivity.MY_PREFERENCE,MODE_PRIVATE);
+            SharedPreferences sharedPreferences = getSharedPreferences(Configuration.MY_PREFERENCE,MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.clear();
             editor.commit();
