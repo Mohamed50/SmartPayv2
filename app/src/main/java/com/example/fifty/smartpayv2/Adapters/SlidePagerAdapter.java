@@ -1,23 +1,17 @@
-package com.example.fifty.smartpayv2;
+package com.example.fifty.smartpayv2.Adapters;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.fifty.smartpayv2.DBA.DBA;
 import com.example.fifty.smartpayv2.DBA.LocalDBA;
-import com.example.fifty.smartpayv2.Payment.Card;
-import com.example.fifty.smartpayv2.Payment.CardInfoManager;
+import com.example.fifty.smartpayv2.Classes.Card;
 import com.example.fifty.smartpayv2.R;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 

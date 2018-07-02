@@ -1,4 +1,4 @@
-package com.example.fifty.smartpayv2;
+package com.example.fifty.smartpayv2.Fragments;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -22,9 +22,11 @@ import android.widget.Toast;
 
 import com.example.fifty.smartpayv2.DBA.DBA;
 import com.example.fifty.smartpayv2.DBA.LocalDBA;
-import com.example.fifty.smartpayv2.Payment.Card;
-import com.example.fifty.smartpayv2.Payment.PaymentInfo;
-import com.example.fifty.smartpayv2.Payment.CardPaymentInfoManager;
+import com.example.fifty.smartpayv2.Classes.Card;
+import com.example.fifty.smartpayv2.Classes.PaymentInfo;
+import com.example.fifty.smartpayv2.Classes.CardPaymentInfoManager;
+import com.example.fifty.smartpayv2.R;
+import com.example.fifty.smartpayv2.Adapters.SlidePagerAdapter;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

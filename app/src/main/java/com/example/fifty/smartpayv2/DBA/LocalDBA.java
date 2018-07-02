@@ -3,13 +3,10 @@ package com.example.fifty.smartpayv2.DBA;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.DatabaseErrorHandler;
-import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.fifty.smartpayv2.Account;
-import com.example.fifty.smartpayv2.Payment.Card;
+import com.example.fifty.smartpayv2.Classes.Card;
 
 import java.util.ArrayList;
 

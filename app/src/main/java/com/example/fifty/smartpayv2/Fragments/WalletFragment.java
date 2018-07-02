@@ -1,17 +1,14 @@
-package com.example.fifty.smartpayv2;
+package com.example.fifty.smartpayv2.Fragments;
 
 import android.app.Fragment;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,13 +16,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.fifty.smartpayv2.Payment.Card;
-import com.example.fifty.smartpayv2.Payment.CardInfoManager;
-import com.example.fifty.smartpayv2.Payment.PaymentHistoryInfoManager;
-import com.example.fifty.smartpayv2.Payment.PaymentInfo;
+import com.example.fifty.smartpayv2.Classes.Card;
+import com.example.fifty.smartpayv2.Classes.CardInfoManager;
 import com.example.fifty.smartpayv2.R;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 

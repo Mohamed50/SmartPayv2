@@ -1,4 +1,4 @@
-package com.example.fifty.smartpayv2;
+package com.example.fifty.smartpayv2.Fragments;
 
 import android.Manifest;
 import android.app.Fragment;
@@ -7,7 +7,9 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.location.Location;
 
+import com.example.fifty.smartpayv2.Classes.Companey;
 import com.example.fifty.smartpayv2.DBA.DBA;
+import com.example.fifty.smartpayv2.R;
 import com.google.android.gms.location.LocationListener;
 
 import android.os.Build;

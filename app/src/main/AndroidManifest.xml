@@ -22,7 +22,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCp8Dxigtc6aA-sJHKnmUBedLyNNFQiJLA" />
 
-        <activity android:name=".LoginActivity">
+        <activity android:name=".Activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,11 +30,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".Activities.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".PayActivity" />
-        <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".Activities.PayActivity" />
+        <activity android:name=".Activities.RegisterActivity"></activity>
     </application>
 
 </manifest>

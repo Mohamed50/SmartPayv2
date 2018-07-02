@@ -1,4 +1,4 @@
-package com.example.fifty.smartpayv2;
+package com.example.fifty.smartpayv2.Fragments;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -16,11 +16,27 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.example.fifty.smartpayv2.Adapters.BankAdapter;
+import com.example.fifty.smartpayv2.Classes.Account;
+import com.example.fifty.smartpayv2.Classes.BankItem;
+import com.example.fifty.smartpayv2.DBA.Configuration;
 import com.example.fifty.smartpayv2.DBA.DBA;
 import com.example.fifty.smartpayv2.DBA.LocalDBA;
-import com.example.fifty.smartpayv2.Payment.Card;
+import com.example.fifty.smartpayv2.Classes.Card;
+import com.example.fifty.smartpayv2.DBA.MySingleton;
+import com.example.fifty.smartpayv2.R;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Fifty on 5/6/2018.
@@ -162,22 +178,63 @@ public class AddCardFragment extends Fragment {
         String cardNo = tv_cardNo.getText().toString();
         if(cardHolderName.isEmpty() || cardBankName.isEmpty() || cardExDate.isEmpty() || cardNo.isEmpty() == false) {
             Log.d("Log:",cardHolderName+"||"+cardBankName+"||"+cardExDate+"||"+cardNo);
-            DBA dba = new DBA();
-            Card card = dba.createNewCardDBA(cardHolderName, cardNo, cardExDate, cardBankName,spinner.getSelectedItemPosition());
-            if (card.getBankName() != null) {
-                LocalDBA localDBA = new LocalDBA(getActivity().getBaseContext());
-                localDBA.insertCard(card);
-                Toast.makeText(getActivity().getBaseContext(), "card Add to Server Successfully", Toast.LENGTH_SHORT).show();
-            } else if (card.getCardFlag() == 1) {
-                Toast.makeText(getActivity().getBaseContext(), "Your Cards is not Supported", Toast.LENGTH_SHORT).show();
-            } else if (card.getCardFlag() == 2) {
-                Toast.makeText(getActivity().getBaseContext(), "your Card is expired", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(getActivity().getBaseContext(), "Check Your Internet Connection And Try Again", Toast.LENGTH_SHORT).show();
-            }
+            Card card = new Card();
+            card.setCardHolderName(cardHolderName);
+            card.setCardNo(cardNo);
+            card.setBankName(cardBankName);
+            card.setCardIcon(spinner.getSelectedItemPosition());
+            addCardToServer(card);
+
         }
         else{
             Toast.makeText(getActivity().getBaseContext(),"Sorry you need to fill all the field first",Toast.LENGTH_SHORT).show();
         }
+    }
+    public void addCardToServer(final Card card){ //send new Card information to the server
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Configuration.REGISTER_URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            if (jsonObject.getString(Configuration.KEY_RESULT).compareTo("successfully") == 0){
+                                LocalDBA localDBA = new LocalDBA(getActivity().getBaseContext());
+                                localDBA.insertCard(card);
+                                Toast.makeText(getActivity().getBaseContext(), jsonObject.getString(Configuration.KEY_MESSAGE), Toast.LENGTH_SHORT).show();
+                            }
+                            else if (jsonObject.getString(Configuration.KEY_RESULT).compareTo("not supported") == 0){
+                                Toast.makeText(getActivity().getBaseContext(),jsonObject.getString(Configuration.KEY_MESSAGE), Toast.LENGTH_SHORT).show();
+                            }
+                            else if (jsonObject.getString(Configuration.KEY_RESULT).compareTo("expired") == 0){
+                                Toast.makeText(getActivity().getBaseContext(),jsonObject.getString(Configuration.KEY_MESSAGE), Toast.LENGTH_SHORT).show();
+                            }
+                            else {
+                                Toast.makeText(getActivity().getBaseContext(), "Check Your Internet Connection And Try Again", Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getActivity().getBaseContext(), "Something went wrong try again", Toast.LENGTH_SHORT).show();
+            }
+
+        })
+        {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> parms = new HashMap<>();
+                parms.put(Configuration.KEY_CARD_NO,card.getCardNo());
+                parms.put(Configuration.KEY_CARD_BANK_NAME,card.getBankName());
+                parms.put(Configuration.KEY_CARD_HOLDER_NAME,card.getCardHolderName());
+                return parms;
+            }
+        };
+        MySingleton.getInstance(getActivity().getApplicationContext()).addToRequestQueue(stringRequest);
+
     }
 }

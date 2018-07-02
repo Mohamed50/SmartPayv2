@@ -1,4 +1,4 @@
-package com.example.fifty.smartpayv2;
+package com.example.fifty.smartpayv2.Fragments;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -12,8 +12,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.fifty.smartpayv2.Payment.PaymentHistoryInfoManager;
-import com.example.fifty.smartpayv2.Payment.PaymentInfo;
+import com.example.fifty.smartpayv2.Classes.PaymentHistoryInfoManager;
+import com.example.fifty.smartpayv2.Classes.PaymentInfo;
+import com.example.fifty.smartpayv2.R;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

@@ -1,7 +1,6 @@
-package com.example.fifty.smartpayv2;
+package com.example.fifty.smartpayv2.Activities;
 
 import android.app.Activity;
-import android.app.SharedElementCallback;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,6 +10,7 @@ import android.widget.Toast;
 
 import com.example.fifty.smartpayv2.DBA.DBA;
 import com.example.fifty.smartpayv2.DBA.LocalDBA;
+import com.example.fifty.smartpayv2.R;
 
 public class LoginActivity extends Activity {
     static String MY_PREFERENCE = "user_session";

@@ -1,4 +1,4 @@
-package com.example.fifty.smartpayv2.Payment;
+package com.example.fifty.smartpayv2.Classes;
 
 import android.content.Context;
 

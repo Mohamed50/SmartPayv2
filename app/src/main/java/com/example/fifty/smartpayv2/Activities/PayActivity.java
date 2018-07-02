@@ -1,4 +1,4 @@
-package com.example.fifty.smartpayv2;
+package com.example.fifty.smartpayv2.Activities;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -17,8 +17,9 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.fifty.smartpayv2.DBA.DBA;
-import com.example.fifty.smartpayv2.Payment.BillInfo;
-import com.example.fifty.smartpayv2.Payment.PaymentInfo;
+import com.example.fifty.smartpayv2.Classes.BillInfo;
+import com.example.fifty.smartpayv2.Classes.PaymentInfo;
+import com.example.fifty.smartpayv2.R;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

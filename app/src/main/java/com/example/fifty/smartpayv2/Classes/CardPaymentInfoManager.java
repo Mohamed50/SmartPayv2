@@ -1,10 +1,9 @@
-package com.example.fifty.smartpayv2.Payment;
+package com.example.fifty.smartpayv2.Classes;
 
 import android.content.Context;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Timer;
 
 /**
  * Created by Fifty on 5/8/2018.

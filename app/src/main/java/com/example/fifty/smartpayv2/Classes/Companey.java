@@ -1,4 +1,4 @@
-package com.example.fifty.smartpayv2;
+package com.example.fifty.smartpayv2.Classes;
 
 import com.google.android.gms.maps.model.LatLng;
 

@@ -1,18 +1,27 @@
 package com.example.fifty.smartpayv2.DBA;
 
-import android.content.SharedPreferences;
-import android.widget.EditText;
+import android.content.Context;
 
-import com.example.fifty.smartpayv2.Account;
-import com.example.fifty.smartpayv2.Companey;
-import com.example.fifty.smartpayv2.Payment.Card;
-import com.example.fifty.smartpayv2.Payment.PaymentInfo;
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.example.fifty.smartpayv2.Classes.Account;
+import com.example.fifty.smartpayv2.Classes.Companey;
+import com.example.fifty.smartpayv2.Classes.Card;
+import com.example.fifty.smartpayv2.Classes.PaymentInfo;
 import com.example.fifty.smartpayv2.R;
+import com.google.android.gms.appdatasearch.GetRecentContextCall;
 import com.google.android.gms.maps.model.LatLng;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Timer;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Fifty on 6/6/2018.
@@ -88,12 +97,6 @@ public class DBA {
     public void updateData() {
     }
 
-    public int SendAccountInformation(Account account){ //Register send Account information from account object the server and storing them in the database
-        //send info to server
-        //insert information to database server should return user_id if process successfully and else return -1
-        int user_id = 1234;
-        return user_id;
-    }
 
     public int deductMoneyFromBank(double money) {
         //server return 1 if there is enough money in the bank Account and the deducting done successfully

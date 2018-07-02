@@ -1,4 +1,4 @@
-package com.example.fifty.smartpayv2;
+package com.example.fifty.smartpayv2.Activities;
 
 import android.app.FragmentManager;
 import android.content.Intent;
@@ -10,12 +10,18 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.example.fifty.smartpayv2.Fragments.AddCardFragment;
+import com.example.fifty.smartpayv2.Fragments.HistoryFragment;
+import com.example.fifty.smartpayv2.Fragments.MapFragment;
+import com.example.fifty.smartpayv2.Fragments.MyCardsFragment;
+import com.example.fifty.smartpayv2.Fragments.PayFragment;
+import com.example.fifty.smartpayv2.Fragments.WalletFragment;
+import com.example.fifty.smartpayv2.R;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {

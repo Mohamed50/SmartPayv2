@@ -1,6 +1,4 @@
-package com.example.fifty.smartpayv2.Payment;
-
-import com.example.fifty.smartpayv2.Companey;
+package com.example.fifty.smartpayv2.Classes;
 
 /**
  * Created by Fifty on 6/11/2018.
