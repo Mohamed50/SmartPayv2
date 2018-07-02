@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.fifty.smartpayv2.Classes.PaymentHistoryInfoManager;
+import com.example.fifty.smartpayv2.ClassesManagers.PaymentHistoryInfoManager;
 import com.example.fifty.smartpayv2.Classes.PaymentInfo;
 import com.example.fifty.smartpayv2.R;
 

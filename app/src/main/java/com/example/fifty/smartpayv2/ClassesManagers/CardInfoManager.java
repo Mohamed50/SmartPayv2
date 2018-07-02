@@ -1,7 +1,8 @@
-package com.example.fifty.smartpayv2.Classes;
+package com.example.fifty.smartpayv2.ClassesManagers;
 
 import android.content.Context;
 
+import com.example.fifty.smartpayv2.Classes.Card;
 import com.example.fifty.smartpayv2.DBA.LocalDBA;
 
 import java.util.ArrayList;

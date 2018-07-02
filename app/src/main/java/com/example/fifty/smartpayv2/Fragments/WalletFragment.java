@@ -17,7 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.fifty.smartpayv2.Classes.Card;
-import com.example.fifty.smartpayv2.Classes.CardInfoManager;
+import com.example.fifty.smartpayv2.ClassesManagers.CardInfoManager;
 import com.example.fifty.smartpayv2.R;
 
 import java.util.ArrayList;

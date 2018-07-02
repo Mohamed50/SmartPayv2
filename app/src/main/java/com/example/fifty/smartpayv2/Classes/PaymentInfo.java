@@ -10,6 +10,8 @@ public class PaymentInfo {
     String companeyName ;
     int CompaneyType ;
     Date paymentDate ;
+    String stringDate;
+    String stringTime;
     double billAmount;
 
     public String getCompaneyName() {
@@ -43,5 +45,22 @@ public class PaymentInfo {
 
     public void setBillAmount(double billAmount) {
         this.billAmount = billAmount;
+    }
+
+    public String getStringDate() {
+
+        return stringDate;
+    }
+
+    public void setStringDate(String stringDate) {
+        this.stringDate = stringDate;
+    }
+
+    public String getStringTime() {
+        return stringTime;
+    }
+
+    public void setStringTime(String stringTime) {
+        this.stringTime = stringTime;
     }
 }

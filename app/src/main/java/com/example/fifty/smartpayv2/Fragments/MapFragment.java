@@ -233,11 +233,11 @@ public class MapFragment extends Fragment implements
                             try {
                                 JSONObject jsonObject = response.getJSONObject(count);
                                 Companey companey = new Companey();
-                                companey.setName(jsonObject.getString(Configuration.KEY_COMPANEY_NAME));
-                                companey.setType(jsonObject.getInt(Configuration.KEY_COMPANEY_TYPE));
+                                companey.setName(jsonObject.getString(Configuration.KEY_COMPANY_NAME));
+                                companey.setType(jsonObject.getInt(Configuration.KEY_COMPANY_TYPE));
                                 companey.setCompaneyLocation(new LatLng(
-                                        jsonObject.getDouble(Configuration.KEY_COMPANEY_LATITUDE),
-                                        jsonObject.getDouble(Configuration.KEY_COMPANEY_LONGITUDE))
+                                        jsonObject.getDouble(Configuration.KEY_COMPANY_LATITUDE),
+                                        jsonObject.getDouble(Configuration.KEY_COMPANY_LONGITUDE))
                                 );
                                 companeyArrayList.add(companey);
                             } catch (JSONException e) {

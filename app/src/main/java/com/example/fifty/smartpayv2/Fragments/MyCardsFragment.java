@@ -24,7 +24,7 @@ import com.example.fifty.smartpayv2.DBA.DBA;
 import com.example.fifty.smartpayv2.DBA.LocalDBA;
 import com.example.fifty.smartpayv2.Classes.Card;
 import com.example.fifty.smartpayv2.Classes.PaymentInfo;
-import com.example.fifty.smartpayv2.Classes.CardPaymentInfoManager;
+import com.example.fifty.smartpayv2.ClassesManagers.CardPaymentInfoManager;
 import com.example.fifty.smartpayv2.R;
 import com.example.fifty.smartpayv2.Adapters.SlidePagerAdapter;
 

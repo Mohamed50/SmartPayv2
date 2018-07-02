@@ -18,22 +18,32 @@ public class Configuration {
     //DATA KEYS ON SERVER
     public static final String KEY_RESULT = "";
     public static final String KEY_MESSAGE = "";
+    //User Tables Keys
     public static final String KEY_USER_ID = "";
     public static final String kEY_USERNAME = "";
     public static final String KEY_FULL_NAME = "";
     public static final String KEY_PASSWORD = "";
     public static final String KEY_EMAIL = "";
     public static final String KEY_PHONE_NO = "";
+    //Cards Table Keys
     public static final String KEY_CARD_NO = "";
     public static final String KEY_CARD_BANK_NAME = "";
     public static final String KEY_CARD_BALANCE = "";
     public static final String KEY_CARD_ICON = "";
     public static final String KEY_CARD_HOLDER_NAME = "";
     public static final String KEY_CARD_FLAG = "";
-    public static final String KEY_COMPANEY_NAME = "";
-    public static final String KEY_COMPANEY_TYPE = "";
-    public static final String KEY_COMPANEY_LATITUDE = "";
-    public static final String KEY_COMPANEY_LONGITUDE = "";
+    //Company Tables Key
+    public static final String KEY_COMPANY_NAME = "";
+    public static final String KEY_COMPANY_TYPE = "";
+    public static final String KEY_COMPANY_LATITUDE = "";
+    public static final String KEY_COMPANY_LONGITUDE = "";
+    //PaymentTransaction Table Key
+    public static final String KEY_PAYMENT_BILL_AMMOUNT = "";
+    public static final String KEY_PAYMENT_COMPANY_NAME = "";
+    public static final String KEY_PAYMENT_COMPANY_TYPE = "";
+    public static final String KEY_PAYMENT_DATE = "";
+    public static final String KEY_PAYMENT_TIME = "";
+
 
 
 

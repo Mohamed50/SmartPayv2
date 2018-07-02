@@ -1,6 +1,8 @@
-package com.example.fifty.smartpayv2.Classes;
+package com.example.fifty.smartpayv2.ClassesManagers;
 
 import android.content.Context;
+
+import com.example.fifty.smartpayv2.Classes.PaymentInfo;
 
 import java.util.ArrayList;
 import java.util.Date;
