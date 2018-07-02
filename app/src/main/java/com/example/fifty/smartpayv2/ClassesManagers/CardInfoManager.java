@@ -36,12 +36,15 @@ public class CardInfoManager {
         this.context = context;
         this.sharedPreferences = sharedPreferences;
         LocalDBA localDBA = new LocalDBA(context);
-        ArrayList cardsList = localDBA.getAllCards();
-        if (cardsList.isEmpty()){
-
+        cardInfoList = localDBA.getAllCards();
+        if (cardInfoList.isEmpty()){
+            getCardsFromServer();
+            for (int i = 0 ; i<cardInfoList.size(); i++){
+                localDBA.insertCard(cardInfoList.get(i));
+            }
         }
         cardInfoManager = this;
-        this.cardInfoList = cardsList ;
+
 
     }
     public ArrayList<Card> getCardsInfoList(){

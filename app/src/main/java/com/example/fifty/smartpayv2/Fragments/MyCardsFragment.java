@@ -1,6 +1,8 @@
 package com.example.fifty.smartpayv2.Fragments;
 
 import android.app.Fragment;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -20,6 +22,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.fifty.smartpayv2.DBA.Configuration;
 import com.example.fifty.smartpayv2.DBA.DBA;
 import com.example.fifty.smartpayv2.DBA.LocalDBA;
 import com.example.fifty.smartpayv2.Classes.Card;
@@ -52,7 +55,8 @@ public class MyCardsFragment extends Fragment {
         collapsingToolbarContent.removeAllViewsInLayout();
         collapseView = inflater.inflate(R.layout.my_cards_collapse_layout,container,false);
         slidePager = (ViewPager) collapseView.findViewById(R.id.slidePager);
-        slidePagerAdapter = new SlidePagerAdapter(getActivity().getBaseContext());
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(Configuration.MY_PREFERENCE, Context.MODE_PRIVATE);
+        slidePagerAdapter = new SlidePagerAdapter(getActivity().getBaseContext(),sharedPreferences);
         slidePager.setAdapter(slidePagerAdapter);
         slidePager.setOnPageChangeListener(viewPagerListener);
         recyclerView = (RecyclerView) myView.findViewById(R.id.card_payment_history_recycler_view);
