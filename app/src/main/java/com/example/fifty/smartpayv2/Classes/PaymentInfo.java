@@ -1,5 +1,6 @@
 package com.example.fifty.smartpayv2.Classes;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -36,6 +37,10 @@ public class PaymentInfo {
 
     public void setPaymentDate(Date paymentDate) {
         this.paymentDate = paymentDate;
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm a");
+        setStringDate(dateFormat.format(paymentDate));
+        setStringTime(timeFormat.format(paymentDate));
     }
 
 

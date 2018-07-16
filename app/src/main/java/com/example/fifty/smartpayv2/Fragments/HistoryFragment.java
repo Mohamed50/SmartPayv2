@@ -76,12 +76,11 @@ public class HistoryFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(PayHolder holder, int position) {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-            SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm a");
+
             holder.paymentObj = paymentList.get(position);
             holder.companeyNameTextView.setText(holder.paymentObj.getCompaneyName());
-            holder.paymentDateTextView.setText(dateFormat.format(holder.paymentObj.getPaymentDate()));
-            holder.paymentTimeTextView.setText(timeFormat.format(holder.paymentObj.getPaymentDate()));
+            holder.paymentDateTextView.setText(holder.paymentObj.getStringDate());
+            holder.paymentTimeTextView.setText(holder.paymentObj.getStringTime());
             holder.billAmountTextView.setText(String.valueOf(holder.paymentObj.getBillAmount())+" SDG");
             if(holder.paymentObj.getCompaneyType()==1)
                 holder.companeyIcon.setImageResource(R.mipmap.coffee_icon);

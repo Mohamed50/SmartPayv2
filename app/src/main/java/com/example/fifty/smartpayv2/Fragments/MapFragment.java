@@ -7,16 +7,12 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.location.Location;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.example.fifty.smartpayv2.Classes.Companey;
 import com.example.fifty.smartpayv2.DBA.Configuration;
-import com.example.fifty.smartpayv2.DBA.DBA;
-import com.example.fifty.smartpayv2.DBA.LocalDBA;
 import com.example.fifty.smartpayv2.DBA.MySingleton;
 import com.example.fifty.smartpayv2.R;
 import com.google.android.gms.location.LocationListener;
